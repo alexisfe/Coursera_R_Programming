@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "source(\"http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript1.R\")\nsubmit()\n",
+    "created" : 1483379765245.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2450939490",
+    "id" : "28BABC48",
+    "lastKnownWriteTime" : 1483360304,
+    "last_content_update" : 1483360304,
+    "path" : "~/Coursera_R_Programming/Project1/submit.R",
+    "project_path" : "Project1/submit.R",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

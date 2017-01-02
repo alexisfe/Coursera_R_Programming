@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nzip_url <- \"https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2Fquiz1_data.zip\"\n\ntemp <- tempfile()\ndownload.file(zip_url,temp)\ndf <- read.csv(unz(temp, \"hw1_data.csv\"))\nunlink(temp)\n\n\n#In the dataset provided for this Quiz, what are the column names of the dataset?\nnames(df)\n# Extract the first 2 rows of the data frame and print them to the console. What does the output look like?\nhead(df, 2)\n# How many observations (i.e. rows) are in this data frame?\nnrow(df)\n# Extract the last 2 rows of the data frame and print them to the console. What does the output look like?\ntail(df, 2)\n# What is the value of Ozone in the 47th row?\ndf[47, \"Ozone\"]\n# How many missing values are in the Ozone column of this data frame?\nnrow(subset(df, is.na(df$Ozone)))\n# What is the mean of the Ozone column in this dataset? Exclude missing values (coded as NA) from this calculation.\nmean(df$Ozone, na.rm=TRUE)\n# Extract the subset of rows of the data frame where Ozone values are above 31 and Temp values are above 90. \n# What is the mean of Solar.R in this subset?\nmean(subset(df, df$Ozone > 31 & df$Temp >  90)$Solar.R, na.rm=TRUE)\n# What is the mean of \"Temp\" when \"Month\" is equal to 6?\nmean(subset(df, df$Month == 6)$Temp, na.rm=TRUE)\n# What was the maximum ozone value in the month of May (i.e. Month = 5)?\nmax(subset(df, df$Month == 5)$Ozone, na.rm=TRUE)\n",
+    "created" : 1483376670982.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "684920304",
+    "id" : "3E4A8515",
+    "lastKnownWriteTime" : 1483369502,
+    "last_content_update" : 1483369502,
+    "path" : "~/Coursera_R_Programming/Week1/CRP_Week1.R",
+    "project_path" : "Week1/CRP_Week1.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

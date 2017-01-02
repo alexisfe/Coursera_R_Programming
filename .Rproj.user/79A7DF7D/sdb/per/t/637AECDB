@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## Read outcome data\n## Check that state and outcome are valid\n## Return hospital name in that state with the given rank\n## 30-day death rate\n\nrankhospital <- function(state, outcome, num = \"best\") {\n  library(R.utils) #capitalize\n  library(dplyr) #arrange\n  \n  valid_outcomes <- c(\"heart attack\", \"heart failure\", \"pneumonia\")\n  \n  oocm_temp <- subset(oocm, State == state)\n  if (nrow(oocm_temp) == 0)\n    stop(\"invalid state\")\n  \n  if (!(outcome %in% valid_outcomes)) \n    stop(\"invalid outcome\")\n    \n  if (!(is.numeric(num) | num %in% c(\"worst\", \"best\"))) \n    stop(\"invalid num\")\n\n  oocm_var = paste(\"Hospital.30.Day.Death..Mortality..Rates.from\", paste(capitalize(unlist(strsplit(outcome, \" \"))), collapse='.'), sep=\".\")\n  \n  if (num == \"worst\") {\n    val <- max(oocm_temp[, oocm_var], na.rm=TRUE)\n    hosp <- oocm_temp[oocm_temp[[oocm_var]] == val, \"Hospital.Name\"]\n    as.character(hosp[sort.list(hosp)[1]])   \n  } else if (num == \"best\") {\n    val <- min(oocm_temp[, oocm_var], na.rm=TRUE)\n    min_hosp <- oocm_temp[oocm_temp[[oocm_var]] == val, \"Hospital.Name\"]\n    as.character(min_hosp[sort.list(min_hosp)[1]])\n  } else {\n    as.character(arrange(oocm_temp, oocm_temp[[oocm_var]], Hospital.Name)$Hospital.Name[num])\n  }\n}",
+    "created" : 1483379819154.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "590642994",
+    "id" : "637AECDB",
+    "lastKnownWriteTime" : 1483360298,
+    "last_content_update" : 1483360298,
+    "path" : "~/Coursera_R_Programming/Project3/rankhospital.R",
+    "project_path" : "Project3/rankhospital.R",
+    "properties" : {
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

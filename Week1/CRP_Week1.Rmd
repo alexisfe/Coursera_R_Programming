@@ -1,0 +1,59 @@
+R Programming - Week 1
+===================================
+
+```{r echo=FALSE}
+library(knitr)
+opts_chunk$set(cache=T, echo=T, warning=F, message=F)
+```
+
+Download, unzip and load dataset
+```{r}
+zip_url <- "https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2Fquiz1_data.zip"
+
+temp <- tempfile()
+download.file(zip_url,temp)
+df <- read.csv(unz(temp, "hw1_data.csv"))
+unlink(temp)
+```
+
+In the dataset provided for this Quiz, what are the column names of the dataset?
+```{r}
+names(df)
+```
+Extract the first 2 rows of the data frame and print them to the console. What does the output look like?
+```{r}
+head(df, 2)
+```
+How many observations (i.e. rows) are in this data frame?
+```{r}
+nrow(df)
+```
+Extract the last 2 rows of the data frame and print them to the console. What does the output look like?
+```{r}
+tail(df, 2)
+```
+What is the value of Ozone in the 47th row?
+```{r}
+df[47, "Ozone"]
+```
+How many missing values are in the Ozone column of this data frame?
+```{r}
+nrow(subset(df, is.na(df$Ozone)))
+```
+What is the mean of the Ozone column in this dataset? Exclude missing values (coded as NA) from this calculation.
+```{r}
+mean(df$Ozone, na.rm=TRUE)
+```
+Extract the subset of rows of the data frame where Ozone values are above 31 and Temp values are above 90. 
+What is the mean of Solar.R in this subset?
+```{r}
+mean(subset(df, df$Ozone > 31 & df$Temp >  90)$Solar.R, na.rm=TRUE)
+```
+What is the mean of "Temp" when "Month" is equal to 6?
+```{r}
+mean(subset(df, df$Month == 6)$Temp, na.rm=TRUE)
+```
+What was the maximum ozone value in the month of May (i.e. Month = 5)?
+```{r}
+max(subset(df, df$Month == 5)$Ozone, na.rm=TRUE)
+```

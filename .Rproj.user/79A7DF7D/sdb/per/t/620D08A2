@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## Read outcome data\n## Check that outcome is valid\n## For each state, find the hospital of the given rank\n## Return a data frame with the hospital names and the\n## (abbreviated) state name\n\nrankall <- function(outcome, num = \"best\") {\n  oocm_split<-split(oocm, oocm$State)\n  hosp_list <- lapply(oocm_split, function(x) {\n    rankhospital(x$State, outcome, num)\n  })\n  data.frame(hospital=unlist(hosp_list), state=names(hosp_list))\n}",
+    "created" : 1483379816934.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1137450170",
+    "id" : "620D08A2",
+    "lastKnownWriteTime" : 1483360298,
+    "last_content_update" : 1483360298,
+    "path" : "~/Coursera_R_Programming/Project3/rankall.R",
+    "project_path" : "Project3/rankall.R",
+    "properties" : {
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

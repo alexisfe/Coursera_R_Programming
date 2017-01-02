@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "corr <- function(directory, threshold = 0) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'threshold' is a numeric vector of length 1 indicating the\n  ## number of completely observed observations (on all\n  ## variables) required to compute the correlation between\n  ## nitrate and sulfate; the default is 0\n  \n  ## Return a numeric vector of correlations\n  ## NOTE: Do not round the result!\n  vcor <- vector()\n  files <- list.files(directory)\n  for (f in files) {\n    #Read csv into df\n    df <- read.csv(paste(directory, f, sep=\"/\"), header=TRUE, na.strings=\"NA\")\n    #Remove columns with at least one NA value and calculate number of rows\n    df <- df[complete.cases(df), ]\n    nobs <- nrow(df) \n    if (nobs>=threshold) {\n      vcor <- append(vcor, cor(df$sulfate, df$nitrate))\n    }\n  }\n  return (vcor)\n}\n\n#corr(\"specdata\", 0)\n",
+    "created" : 1483379774806.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4078010210",
+    "id" : "754A7918",
+    "lastKnownWriteTime" : 1483360303,
+    "last_content_update" : 1483360303,
+    "path" : "~/Coursera_R_Programming/Project1/corr.R",
+    "project_path" : "Project1/corr.R",
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

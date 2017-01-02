@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "R Programming - Week 1\n===================================\n\n```{r echo=FALSE}\nlibrary(knitr)\nopts_chunk$set(cache=T, echo=T, warning=F, message=F)\n```\n\nDownload, unzip and load dataset\n```{r}\nzip_url <- \"https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2Fquiz1_data.zip\"\n\ntemp <- tempfile()\ndownload.file(zip_url,temp)\ndf <- read.csv(unz(temp, \"hw1_data.csv\"))\nunlink(temp)\n```\n\nIn the dataset provided for this Quiz, what are the column names of the dataset?\n```{r}\nnames(df)\n```\nExtract the first 2 rows of the data frame and print them to the console. What does the output look like?\n```{r}\nhead(df, 2)\n```\nHow many observations (i.e. rows) are in this data frame?\n```{r}\nnrow(df)\n```\nExtract the last 2 rows of the data frame and print them to the console. What does the output look like?\n```{r}\ntail(df, 2)\n```\nWhat is the value of Ozone in the 47th row?\n```{r}\ndf[47, \"Ozone\"]\n```\nHow many missing values are in the Ozone column of this data frame?\n```{r}\nnrow(subset(df, is.na(df$Ozone)))\n```\nWhat is the mean of the Ozone column in this dataset? Exclude missing values (coded as NA) from this calculation.\n```{r}\nmean(df$Ozone, na.rm=TRUE)\n```\nExtract the subset of rows of the data frame where Ozone values are above 31 and Temp values are above 90. \nWhat is the mean of Solar.R in this subset?\n```{r}\nmean(subset(df, df$Ozone > 31 & df$Temp >  90)$Solar.R, na.rm=TRUE)\n```\nWhat is the mean of \"Temp\" when \"Month\" is equal to 6?\n```{r}\nmean(subset(df, df$Month == 6)$Temp, na.rm=TRUE)\n```\nWhat was the maximum ozone value in the month of May (i.e. Month = 5)?\n```{r}\nmax(subset(df, df$Month == 5)$Ozone, na.rm=TRUE)\n```",
+    "created" : 1483379394283.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2620353889",
+    "id" : "24E2E37E",
+    "lastKnownWriteTime" : 1483379447,
+    "last_content_update" : 1483379447699,
+    "path" : "~/Coursera_R_Programming/Week1/CRP_Week1.Rmd",
+    "project_path" : "Week1/CRP_Week1.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

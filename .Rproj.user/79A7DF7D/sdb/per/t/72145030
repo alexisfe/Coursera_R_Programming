@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "pollutantmean <- function(directory, pollutant, id = 1:332) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'pollutant' is a character vector of length 1 indicating\n  ## the name of the pollutant for which we will calculate the\n  ## mean; either \"sulfate\" or \"nitrate\".\n  \n  ## 'id' is an integer vector indicating the monitor ID numbers\n  ## to be used\n  \n  ## Return the mean of the pollutant across all monitors list\n  ## in the 'id' vector (ignoring NA values)\n  ## NOTE: Do not round the result!\n  v = vector(\"numeric\") \n  for (i in id) {\n    df <- read.csv(paste(directory, paste(sprintf(\"%03d\", i), \"csv\", sep=\".\"), sep=\"/\"), header=TRUE)\n    v <- append(v, unlist(df[pollutant]))\n  }\n  return (mean(v, na.rm=TRUE))\n}\n\npollutantmean(\"specdata\", \"sulfate\")\n\nv = vector() \n\n  df <- read.csv(paste(\"specdata\", \"001.csv\", sep=\"/\"), header=TRUE)\n  v <- append(v, unlist(df[\"sulfate\"]))\n  v <- v[\"sulfate\"]\n  \nmean(v, na.rm=TRUE)",
+    "created" : 1483379767604.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4236015792",
+    "id" : "72145030",
+    "lastKnownWriteTime" : 1483360303,
+    "last_content_update" : 1483360303,
+    "path" : "~/Coursera_R_Programming/Project1/pollutantmean.R",
+    "project_path" : "Project1/pollutantmean.R",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

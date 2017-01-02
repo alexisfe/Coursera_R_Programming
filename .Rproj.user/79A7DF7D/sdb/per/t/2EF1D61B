@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "##The following two functions allow to cache matrix inverse computation which helps make repeated expensive computations much more time-efficient\n\n## Creates a special matrix that is  really a list containing functions to set, get, setinverse and getinverse.\n\nmakeCacheMatrix <- function(x = matrix()) {\n  i <- NULL\n  set <- function(y) {\n    x <<- y\n    i <<- NULL\n  }\n  get <- function() x\n  setinverse <- function(inverse) i <<- inverse\n  getinverse <- function() i\n  list(set = set, get = get,\n       setinverse = setinverse,\n       getinverse = getinverse)\n}\n\n## Attempts to fetch from cache the inverse of a matrix, otherwise calculate the inverse and caches the result\n\ncacheSolve <- function(x, ...) {\n  i <- x$getinverse()\n  if(!is.null(i)) {\n    message(\"getting cached data\")\n    return(i)\n  }\n  data <- x$get()\n  i <- solve(data)\n  x$setinverse(i)\n  i\n}\n",
+    "created" : 1483379790231.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2627860743",
+    "id" : "2EF1D61B",
+    "lastKnownWriteTime" : 1483360290,
+    "last_content_update" : 1483360290,
+    "path" : "~/Coursera_R_Programming/Project2/cachematrix.R",
+    "project_path" : "Project2/cachematrix.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

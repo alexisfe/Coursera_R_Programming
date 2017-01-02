@@ -1,0 +1,30 @@
+R Programming - Week 3
+===================================
+
+```{r echo=FALSE}
+library(knitr)
+opts_chunk$set(cache=T, echo=T, warning=F, message=F)
+```
+
+Load required libraries and datasets
+```{r}
+library(datasets)
+data(iris)
+data(mtcars)
+```
+
+What is the mean of 'Sepal.Length' for the species virginica?
+```{r}
+mean(subset(iris, Species=="virginica")$Sepal.Length, na.rm=T)
+``` 
+
+Return a vector of the means of the variables 'Sepal.Length', 'Sepal.Width', 'Petal.Length', and 'Petal.Width'?
+```{r}
+apply(iris[, 1:4], 2, mean)
+```
+
+How can one calculate the average miles per gallon (mpg) by number of cylinders in the car (cyl)?
+```{r}
+mpg_by_cyl <- with(mtcars, tapply(mpg, cyl, mean))
+abs(mpg_by_cyl[3]-mpg_by_cyl[1])
+```

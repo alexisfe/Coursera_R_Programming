@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "complete <- function(directory, id = 1:332) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'id' is an integer vector indicating the monitor ID numbers\n  ## to be used\n  \n  ## Return a data frame of the form:\n  ## id nobs\n  ## 1  117\n  ## 2  1041\n  ## ...\n  ## where 'id' is the monitor ID number and 'nobs' is the\n  ## number of complete cases\n  df2 = data.frame(id=numeric(), nobs=numeric())\n  for (i in id) {\n    #Read csv into df\n    df <- read.csv(paste(directory, paste(sprintf(\"%03d\", i), \"csv\", sep=\".\"), sep=\"/\"), header=TRUE, na.strings=\"NA\")\n    #Remove columns with at least one NA value and calculate number of rows\n    nobs <- nrow(df[complete.cases(df), ]) \n    #Append to df2 csv id and number of complete rows\n    df2[nrow(df2)+1, ] <- c(i, nobs)\n  }\n  return (df2)\n}",
+    "created" : 1483376652396.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2557002900",
+    "id" : "D43BED7A",
+    "lastKnownWriteTime" : 1483360303,
+    "last_content_update" : 1483360303,
+    "path" : "~/Coursera_R_Programming/Project1/complete.R",
+    "project_path" : "Project1/complete.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

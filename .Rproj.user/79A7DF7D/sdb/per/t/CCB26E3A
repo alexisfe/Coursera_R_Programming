@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "R Programming - Week 3\n===================================\n\n```{r echo=FALSE}\nlibrary(knitr)\nopts_chunk$set(cache=T, echo=T, warning=F, message=F)\n```\n\nLoad required libraries and datasets\n```{r}\nlibrary(datasets)\ndata(iris)\ndata(mtcars)\n```\n\nWhat is the mean of 'Sepal.Length' for the species virginica?\n```{r}\nmean(subset(iris, Species==\"virginica\")$Sepal.Length, na.rm=T)\n``` \n\nReturn a vector of the means of the variables 'Sepal.Length', 'Sepal.Width', 'Petal.Length', and 'Petal.Width'?\n```{r}\napply(iris[, 1:4], 2, mean)\n```\n\nHow can one calculate the average miles per gallon (mpg) by number of cylinders in the car (cyl)?\n```{r}\nmpg_by_cyl <- with(mtcars, tapply(mpg, cyl, mean))\nabs(mpg_by_cyl[3]-mpg_by_cyl[1])\n```",
+    "created" : 1483379437207.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3207904834",
+    "id" : "CCB26E3A",
+    "lastKnownWriteTime" : 1483379740,
+    "last_content_update" : 1483379740677,
+    "path" : "~/Coursera_R_Programming/CRP_Week3.Rmd",
+    "project_path" : "CRP_Week3.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
